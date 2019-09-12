@@ -7,43 +7,68 @@ const TeamForm = props => {
     lastName: "",
     email: "",
     exp: "",
-    role: ""  
+    role: ""
   });
 
-  const handleFirstNameChange = event => {
-    setTeam({...setTeam, firstname: event.target.value})
-  }
-  const handleLastNameChange = event => {
-    setTeam({...setTeam, lastname: event.target.value})
-  }
-  const handleEmailChange = event => {
-    setTeam({...setTeam, email: event.target.value})
-  }
-  const handleXPChange = event => {
-    setTeam({...setTeam, exp: event.target.value})
-  }
-  const handleRoleChange = event => {
-    setTeam({...setTeam, role: event.target.value})
-  }
+  const handleChange = event => {
+    setTeam({ ...team, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(setTeam);
-  }
+    console.log(event);
+    props.setTeammates([...props.teammates, team])
+  };
 
   return (
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <input  type="text" name="firstname" placeholder="First Name" onChange={handleFirstNameChange }/><br></br>
-          <input  type="text" name="lastname" placeholder="Last Name" onChange={handleLastNameChange } /><br></br>
-          <input  type="text" name="email" placeholder="email" onChange={handleEmailChange } /><br></br>
-          <input  type="text" name="XP" placeholder="Years of Experience" onChange={handleXPChange} /><br></br>
-          <input  type="text" name="role" placeholder="Team Role" onChange={handleRoleChange} /><br></br>
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First Name"
+            onChange={handleChange }
+            value={team.firstname}
+
+          />
+          <br></br>
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Last Name"
+            onChange={handleChange}
+            value={team.lastname}
+          />
+          <br></br>
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            onChange={handleChange}
+            value={team.email}
+
+          />
+          <br></br>
+          <input
+            type="text"
+            name="exp"
+            placeholder="Years of Experience"
+            onChange={handleChange}
+            value={team.exp}
+
+          />
+          <br></br>
+          <input
+            type="text"
+            name="role"
+            placeholder="Team Role"
+            onChange={handleChange}
+            value={team.role}
+
+          />
+          <br></br>
           <button type="submit">Register!</button>
-
-
-
         </form>
       </div>
     </>

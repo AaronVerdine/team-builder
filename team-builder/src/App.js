@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <h1>Register Team Member</h1>
 
-      <TeamForm />
+      <TeamForm teammates={teammates} setTeammates={setTeammates}/>
 
       {teammates.map((teammate, index) => (
         <div className="teammate-card" key={index}>
