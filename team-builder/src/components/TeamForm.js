@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-const Form = () => {
+const TeamForm = () => {
   // console.log(props);
-const [team, setTeam] = useState();
+  const [team, setTeam] = useState();
 
   return (
     <>
       <div>
-        <form>
-          
-        </form>
+        <form></form>
       </div>
     </>
   );
