@@ -2,13 +2,16 @@ import React, { useState } from "react";
 
 const TeamForm = props => {
   // console.log(props);
-  const [team, setTeam] = useState({
-    firstName: "",
-    lastName: "",
+
+  const initialForm = {
+    firstname: "",
+    lastname: "",
     email: "",
     exp: "",
     role: ""
-  });
+  };
+
+  const [team, setTeam] = useState(initialForm);
 
   const handleChange = event => {
     setTeam({ ...team, [event.target.name]: event.target.value });
@@ -16,8 +19,15 @@ const TeamForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
-    props.setTeammates([...props.teammates, team])
+    props.setTeammates([...props.teammates, team]);
+
+    resetForm(event);
+  };
+
+  const resetForm = event => {
+    event.preventDefault();
+
+    setTeam(initialForm);
   };
 
   return (
@@ -28,9 +38,8 @@ const TeamForm = props => {
             type="text"
             name="firstname"
             placeholder="First Name"
-            onChange={handleChange }
+            onChange={handleChange}
             value={team.firstname}
-
           />
           <br></br>
           <input
@@ -47,7 +56,6 @@ const TeamForm = props => {
             placeholder="email"
             onChange={handleChange}
             value={team.email}
-
           />
           <br></br>
           <input
@@ -56,7 +64,6 @@ const TeamForm = props => {
             placeholder="Years of Experience"
             onChange={handleChange}
             value={team.exp}
-
           />
           <br></br>
           <input
@@ -65,10 +72,12 @@ const TeamForm = props => {
             placeholder="Team Role"
             onChange={handleChange}
             value={team.role}
-
           />
           <br></br>
           <button type="submit">Register!</button>
+          <button type="button" onClick={resetForm}>
+            Reset
+          </button>
         </form>
       </div>
     </>
